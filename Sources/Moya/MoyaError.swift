@@ -4,30 +4,39 @@ import Foundation
 public enum MoyaError: Swift.Error {
 
     /// Indicates a response failed to map to an image.
+    /// 标识响应数据转image失败
     case imageMapping(Response)
 
     /// Indicates a response failed to map to a JSON structure.
+    /// 标识响应数据转JSON结构失败
     case jsonMapping(Response)
 
     /// Indicates a response failed to map to a String.
+    /// 标识响应数据转String失败
     case stringMapping(Response)
 
     /// Indicates a response failed to map to a Decodable object.
+    /// 标识响应数据解析失败
     case objectMapping(Swift.Error, Response)
 
     /// Indicates that Encodable couldn't be encoded into Data
+    /// 标识请求数据encoded失败
     case encodableMapping(Swift.Error)
 
     /// Indicates a response failed with an invalid HTTP status code.
+    /// 标识响应失败，无效的http状态码
     case statusCode(Response)
 
     /// Indicates a response failed due to an underlying `Error`.
+    /// 标识响应失败，基础错误
     case underlying(Swift.Error, Response?)
 
     /// Indicates that an `Endpoint` failed to map to a `URLRequest`.
+    /// 标识Endpoint转URLRequest失败
     case requestMapping(String)
 
     /// Indicates that an `Endpoint` failed to encode the parameters for the `URLRequest`.
+    /// 标识Endpointz从URLRequest解析参数失败
     case parameterEncoding(Swift.Error)
 }
 

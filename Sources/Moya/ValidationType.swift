@@ -1,6 +1,7 @@
 import Foundation
 
 /// Represents the status codes to validate through Alamofire.
+/// 标识是否通过Alamofire校验状态码
 public enum ValidationType {
 
     /// No validation.

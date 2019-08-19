@@ -2,12 +2,15 @@ import Foundation
 import Result
 
 /// Closure to be executed when a request has completed.
+/// 请求完成执行的闭包
 public typealias Completion = (_ result: Result<Moya.Response, MoyaError>) -> Void
 
 /// Closure to be executed when progress changes.
+/// 进度改变执行的闭包
 public typealias ProgressBlock = (_ progress: ProgressResponse) -> Void
 
 /// A type representing the progress of a request.
+/// 一个表示请求进度的类型
 public struct ProgressResponse {
 
     /// The optional response of the request.
@@ -36,6 +39,7 @@ public struct ProgressResponse {
     }
 
     /// A Boolean value stating whether the request is completed.
+    /// 一个布尔值，表明请求是否完成
     public var completed: Bool {
         return response != nil
     }

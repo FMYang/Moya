@@ -6,6 +6,7 @@ public enum MultiTarget: TargetType {
     case target(TargetType)
 
     /// Initializes a `MultiTarget`.
+    /// 初始化MultiTarget
     public init(_ target: TargetType) {
         self = MultiTarget.target(target)
     }

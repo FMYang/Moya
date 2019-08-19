@@ -21,20 +21,25 @@ open class Endpoint {
     public typealias SampleResponseClosure = () -> EndpointSampleResponse
 
     /// A string representation of the URL for the request.
+    /// 请求的URL
     public let url: String
 
     /// A closure responsible for returning an `EndpointSampleResponse`.
     public let sampleResponseClosure: SampleResponseClosure
 
     /// The HTTP method for the request.
+    /// HTTP方法
     public let method: Moya.Method
 
     /// The `Task` for the request.
+    /// 请求的Task
     public let task: Task
 
     /// The HTTP header fields for the request.
+    /// HTTP请求头
     public let httpHeaderFields: [String: String]?
 
+    /// 初始化方法
     public init(url: String,
                 sampleResponseClosure: @escaping SampleResponseClosure,
                 method: Moya.Method,
@@ -72,14 +77,17 @@ open class Endpoint {
 }
 
 /// Extension for converting an `Endpoint` into a `URLRequest`.
+/// Endpoint扩展，将Endpoint转为URLRequest
 extension Endpoint {
     // swiftlint:disable cyclomatic_complexity
     /// Returns the `Endpoint` converted to a `URLRequest` if valid. Throws an error otherwise.
+    /// Endpoint转为URLRequest
     public func urlRequest() throws -> URLRequest {
         guard let requestURL = Foundation.URL(string: url) else {
             throw MoyaError.requestMapping(url)
         }
 
+        /// 初始化URLRequest
         var request = URLRequest(url: requestURL)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = httpHeaderFields
@@ -118,6 +126,7 @@ extension Endpoint {
 }
 
 /// Required for using `Endpoint` as a key type in a `Dictionary`.
+/// Endpoint扩展，允许将Endpoint作为字典的key
 extension Endpoint: Equatable, Hashable {
     public func hash(into hasher: inout Hasher) {
         guard let request = try? urlRequest() else {
